@@ -60,6 +60,10 @@ const HomeSearch = () => {
                             width={100}
                             height={100}
                             alt="random search loading..."
+                            style={{
+                                width: '1.5rem',
+                                height: 'auto',
+                            }}
                         />
                     ) : (
                         'I am Feeling Lucky'
