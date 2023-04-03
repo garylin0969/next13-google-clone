@@ -3,10 +3,10 @@ import './globals.css';
 
 export const metadata = {
     title: 'Google Clone',
-    description: 'This is the Google Clone website',
+    description: 'This website is an Google clone',
     icons: {
-        icon: '/favicon.svg',
-      },
+        icon: '/google.svg',
+    },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
