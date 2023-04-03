@@ -5,7 +5,7 @@ const HomeHeader = () => {
     return (
         <>
             <header className="flex justify-end p-5 text-sm">
-                <div className="flex space-x-4  items-center">
+                <div className="flex space-x-4 items-center">
                     <Link className="hover:underline" href="https://mail.google.com/">
                         Gmail
                     </Link>
