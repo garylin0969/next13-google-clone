@@ -7,7 +7,14 @@ const Home = () => {
         <>
             <HomeHeader />
             <div className="flex flex-col items-center mt-24">
-                <Image src="/google_logo.png" width={300} height={100} alt="google logo" />
+                <Image
+                    src="/google_logo.png"
+                    width={300}
+                    height={100}
+                    alt="google logo"
+                    priority
+                    style={{ width: 'auto', height: 'auto' }}
+                />
                 <HomeSearch />
             </div>
         </>
