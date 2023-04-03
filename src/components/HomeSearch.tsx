@@ -1,6 +1,6 @@
 'use client';
 
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -10,18 +10,18 @@ import { BsFillMicFill } from 'react-icons/bs';
 
 const HomeSearch = () => {
     const router: AppRouterInstance = useRouter();
-    const [search, setSearch] = useState<string>('');
+    const [searchInput, setSearchInput] = useState<string>('');
     const [randomSearchLoading, setRandomSearchLoading] = useState<boolean>(false);
 
     const handleSubmit = (e: FormEvent<HTMLFormElement> | MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        if (!search.trim()) return;
-        router.push(`/search/web?query=${search}`);
+        if (!searchInput.trim()) return;
+        router.push(`/search/web?query=${searchInput}`);
     };
 
     const randomSearch = async () => {
         setRandomSearchLoading(true);
-        const randomWord: Response = await axios
+        const randomWord: AxiosResponse = await axios
             .get('https://random-word-api.herokuapp.com/word')
             .then((res) => res.data[0]);
         if (!randomWord) return;
@@ -39,8 +39,8 @@ const HomeSearch = () => {
                 <input
                     className="flex-grow focus:outline-none"
                     type="text"
-                    value={search}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)}
+                    value={searchInput}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => setSearchInput(e.target.value)}
                 />
                 <BsFillMicFill className="text-lg" />
             </form>
@@ -59,10 +59,10 @@ const HomeSearch = () => {
                             src="/random_search_loading.svg"
                             width={100}
                             height={100}
-                            alt="randomSearchLoading..."
+                            alt="random search loading..."
                         />
                     ) : (
-                        "I'm Feeling Lucky"
+                        'I am Feeling Lucky'
                     )}
                 </button>
             </div>
