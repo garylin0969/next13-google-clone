@@ -10,22 +10,22 @@ import { BsFillMicFill } from 'react-icons/bs';
 
 const HomeSearch = () => {
     const router: AppRouterInstance = useRouter();
-    const [searchInput, setSearchInput] = useState<string>('');
+    const [searchInputValue, setSearchInputValue] = useState<string>('');
     const [randomSearchLoading, setRandomSearchLoading] = useState<boolean>(false);
 
-    const handleSubmit = (e: FormEvent<HTMLFormElement> | MouseEvent<HTMLButtonElement>) => {
+    const handleSubmit = (e: FormEvent<HTMLFormElement> | MouseEvent<HTMLButtonElement>): void => {
         e.preventDefault();
-        if (!searchInput.trim()) return;
-        router.push(`/search/web?query=${searchInput}`);
+        if (!searchInputValue.trim()) return;
+        router.push(`/search/web?searchTerm=${searchInputValue}`);
     };
 
-    const randomSearch = async () => {
+    const randomSearch = async (): Promise<void> => {
         setRandomSearchLoading(true);
         const randomWord: AxiosResponse = await axios
             .get('https://random-word-api.herokuapp.com/word')
             .then((res) => res.data[0]);
         if (!randomWord) return;
-        router.push(`/search/web?query=${randomWord}`);
+        router.push(`/search/web?searchTerm=${randomWord}`);
         setRandomSearchLoading(false);
     };
 
@@ -39,8 +39,8 @@ const HomeSearch = () => {
                 <input
                     className="flex-grow focus:outline-none"
                     type="text"
-                    value={searchInput}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) => setSearchInput(e.target.value)}
+                    value={searchInputValue}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => setSearchInputValue(e.target.value)}
                 />
                 <BsFillMicFill className="text-lg" />
             </form>
