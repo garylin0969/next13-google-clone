@@ -2,13 +2,13 @@ import { googleServerApi } from '@/app/api/serverApi';
 import { SearchItem, SearchResults } from '@/types';
 import Link from 'next/link';
 
-interface WebSearchPage {
+interface WebSearchPageProps {
     searchParams: {
         searchTerm: string;
     };
 }
 
-const WebSearchPage = async ({ searchParams }: WebSearchPage) => {
+const WebSearchPage = async ({ searchParams }: WebSearchPageProps) => {
     const data: SearchResults = await googleServerApi.searchResults(searchParams.searchTerm);
     const results: SearchItem[] = data.items;
     if (!results) {
