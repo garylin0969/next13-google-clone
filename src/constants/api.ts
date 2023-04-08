@@ -1,3 +1,3 @@
-const baseURL: string = 'https://api.themoviedb.org/3';
+const baseURL: string = '';
 
 export { baseURL };
