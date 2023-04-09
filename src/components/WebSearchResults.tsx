@@ -1,4 +1,4 @@
-import { SearchItem, SearchResults } from '@/types';
+import { SearchResults } from '@/types';
 import Parser from 'html-react-parser';
 import Link from 'next/link';
 
@@ -14,7 +14,7 @@ const WebSearchResults = ({ results }: WebSearchResultsProps) => {
                     About {results.searchInformation?.formattedTotalResults} results (
                     {results.searchInformation?.formattedSearchTime} seconds)
                 </p>
-                {results.items?.map((result: SearchItem) => (
+                {results.items?.map((result) => (
                     <div className="mb-8 max-w-xl" key={result.link}>
                         <div className="group flex flex-col">
                             <Link className="text-sm truncate" href={result.link}>
