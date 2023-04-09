@@ -1,5 +1,6 @@
 import { SearchResults } from '@/types';
 import Link from 'next/link';
+import Pagination from './Pagination';
 
 interface ImageSearchResultsProps {
     results: SearchResults;
@@ -13,22 +14,25 @@ const ImageSearchResults = ({ results }: ImageSearchResultsProps) => {
                     {results.items?.map((result) => (
                         <div className="mb-8" key={result.link}>
                             <div className="group">
-                                <Link href={result.image?.contextLink ?? ''}>
+                                <Link href={result.image?.contextLink || ''}>
                                     <img
                                         className="h-60 group-hover:shadow-xl w-full object-contain transition-shadow"
                                         src={result.link}
                                         alt={result.title}
                                     />
                                 </Link>
-                                <Link href={result.image?.contextLink ?? ''}>
+                                <Link href={result.image?.contextLink || ''}>
                                     <h2 className="group-hover:underline truncate text-xl">{result.title}</h2>
                                 </Link>
-                                <Link href={result.image?.contextLink ?? ''}>
+                                <Link href={result.image?.contextLink || ''}>
                                     <p className="group-hover:underline text-gray-600">{result.displayLink}</p>
                                 </Link>
                             </div>
                         </div>
                     ))}
+                </div>
+                <div className="ml-16">
+                    <Pagination />
                 </div>
             </div>
         </>

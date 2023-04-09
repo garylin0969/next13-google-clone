@@ -1,6 +1,7 @@
 import { SearchResults } from '@/types';
 import Parser from 'html-react-parser';
 import Link from 'next/link';
+import Pagination from './Pagination';
 
 interface WebSearchResultsProps {
     results: SearchResults;
@@ -9,7 +10,7 @@ interface WebSearchResultsProps {
 const WebSearchResults = ({ results }: WebSearchResultsProps) => {
     return (
         <>
-            <div className="w-full mx-auto px-3 pb-24 sm:pl-[5%] md:pl-[14%] lg:pl-52">
+            <div className="w-full mx-auto px-3 pb-40 sm:pb-24 sm:pl-[5%] md:pl-[14%] lg:pl-52">
                 <p className="text-gray-600 text-sm mb-5 mt-3">
                     About {results.searchInformation?.formattedTotalResults} results (
                     {results.searchInformation?.formattedSearchTime} seconds)
@@ -30,6 +31,7 @@ const WebSearchResults = ({ results }: WebSearchResultsProps) => {
                         <p className="text-gray-600">{Parser(result.htmlSnippet)}</p>
                     </div>
                 ))}
+                <Pagination />
             </div>
         </>
     );

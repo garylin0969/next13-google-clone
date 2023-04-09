@@ -79,3 +79,9 @@ export interface SearchResults {
     searchInformation: SearchInformation;
     items: SearchItem[];
 }
+
+export interface QueryConditions {
+    q: string;
+    searchType?: string;
+    start: string;
+}
