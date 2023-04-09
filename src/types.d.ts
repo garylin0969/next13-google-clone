@@ -21,8 +21,15 @@ export interface SearchUrl {
 }
 
 export interface Request {
-    kind: string;
-    url: SearchUrl;
+    title: string;
+    totalResults: string;
+    searchTerms: string;
+    count: number;
+    startIndex: number;
+    inputEncoding: string;
+    outputEncoding: string;
+    safe: string;
+    cx: string;
 }
 
 export interface Query {
@@ -37,6 +44,16 @@ export interface SearchInformation {
     formattedTotalResults: string;
 }
 
+export interface Image {
+    contextLink: string;
+    height: number;
+    width: number;
+    byteSize: number;
+    thumbnailLink: string;
+    thumbnailHeight: number;
+    thumbnailWidth: number;
+}
+
 export interface SearchItem {
     kind: string;
     title: string;
@@ -45,10 +62,13 @@ export interface SearchItem {
     displayLink: string;
     snippet: string;
     htmlSnippet: string;
-    cacheId: string;
-    formattedUrl: string;
-    htmlFormattedUrl: string;
-    pagemap: any;
+    mime: string;
+    fileFormat: string;
+    image?: Image;
+    cacheId?: string;
+    formattedUrl?: string;
+    htmlFormattedUrl?: string;
+    pagemap?: any;
 }
 
 export interface SearchResults {
