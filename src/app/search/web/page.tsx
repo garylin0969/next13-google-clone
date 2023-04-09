@@ -1,4 +1,5 @@
 import { googleServerApi } from '@/app/api/serverApi';
+import WebSearchResults from '@/components/WebSearchResults';
 import { SearchItem, SearchResults } from '@/types';
 import Link from 'next/link';
 
@@ -24,7 +25,7 @@ const WebSearchPage = async ({ searchParams }: WebSearchPageProps) => {
             </>
         );
     }
-    return <>{results && results.map((result: SearchItem, index: number) => <h1 key={index}>{result.title}</h1>)}</>;
+    return <>{results && <WebSearchResults results={data} />}</>;
 };
 
 export default WebSearchPage;
