@@ -13,6 +13,7 @@ interface WebSearchPageProps {
 const WebSearchPage = async ({ searchParams }: WebSearchPageProps) => {
     const startIndex: string = searchParams.start || '1';
     const query: QueryConditions = { q: searchParams.searchTerm, start: startIndex };
+    await new Promise((resolve) => setTimeout(resolve, 1500));
     const data: SearchResults = await googleServerApi.searchResults(query);
     const results: SearchItem[] = data.items;
     if (!results) return <NoResultsFound />;

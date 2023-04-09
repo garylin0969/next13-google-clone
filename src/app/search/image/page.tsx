@@ -13,6 +13,7 @@ interface ImageSearchPageProps {
 const ImageSearchPage = async ({ searchParams }: ImageSearchPageProps) => {
     const startIndex: string = searchParams.start || '1';
     const query: QueryConditions = { q: searchParams.searchTerm, searchType: 'image', start: startIndex };
+    await new Promise((resolve) => setTimeout(resolve, 1500));
     const data: SearchResults = await googleServerApi.searchResults(query);
     const results: SearchItem[] = data.items;
     if (!results) return <NoResultsFound />;
