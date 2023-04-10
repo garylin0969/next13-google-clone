@@ -5,6 +5,7 @@ import axios from 'axios';
 import useSWR from 'swr';
 
 const CountryLookup = () => {
+    // or react query
     const fetcher = (url: string): Promise<GeoLocation> => axios.get(url).then((res) => res.data);
     const { data, error } = useSWR('http://ip-api.com/json', fetcher);
 
