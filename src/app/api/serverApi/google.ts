@@ -1,8 +1,8 @@
 import { QueryConditions, SearchResults } from '@/types';
 import { staticFetching } from './request';
 
-const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
-const CONTEXT_KEY = process.env.CONTEXT_KEY;
+const GOOGLE_API_KEY = process.env.NEXT_PRIVATE_GOOGLE_API_KEY;
+const CONTEXT_KEY = process.env.NEXT_PRIVATE_CONTEXT_KEY;
 
 interface SearchParams {
     key?: string;
